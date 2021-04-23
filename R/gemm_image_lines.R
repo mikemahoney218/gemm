@@ -91,7 +91,7 @@ gemm_unsplash_image_lines <- function(unsplash_token,
 
   return(
     list(
-      image_output = image_lines(photo$urls$full,
+      image_output = gemm_image_lines(photo$urls$full,
                                  filepath = filepath,
                                  line_color = line_color,
                                  background_color = background_color),
