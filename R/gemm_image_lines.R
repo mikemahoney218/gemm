@@ -18,6 +18,7 @@ gemm_image_lines <- function(photo,
 
   # Read in image and convert to grayscale
   img <- magick::image_read(photo)
+  img <- magick::image_contrast(img, 4)
   img <- magick::image_convert(img, colorspace = "gray")
 
   # Get dimensions
