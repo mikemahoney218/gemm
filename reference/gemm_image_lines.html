@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Authors • gemm</title>
+<title>Convert an image to a series of different-width lines. — gemm_image_lines • gemm</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script>
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,13 +33,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Authors" />
+<meta property="og:title" content="Convert an image to a series of different-width lines. — gemm_image_lines" />
+<meta property="og:description" content="This function is adopted directly from  Georgios Karamanis' aRtist project
+at '&amp;lt;https://github.com/gkaramanis/aRtist/blob/main/portraits/portraits" />
 
 
 
@@ -67,7 +69,7 @@
   <body data-spy="scroll" data-target="#toc">
     
 
-    <div class="container template-authors">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -79,7 +81,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">gemm</a>
+        <a class="navbar-link" href="../index.html">gemm</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -87,24 +89,24 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="news/index.html">News</a>
+  <a href="../news/index.html">News</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="news/index.html">News</a>
+  <a href="../news/index.html">News</a>
 </li>
 <li>
   <a href="https://github.com/mikemahoney218/gemm">
@@ -123,23 +125,57 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Authors</h1>
+    <h1>Convert an image to a series of different-width lines.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mikemahoney218/gemm/blob/master/R/gemm_image_lines.R'><code>R/gemm_image_lines.R</code></a></small>
+    <div class="hidden name"><code>gemm_image_lines.Rd</code></div>
     </div>
-    
-    <ul class="list-unstyled">
-      <li>
-        <p><strong>Michael Mahoney</strong>. Author, maintainer. <a href='https://orcid.org/0000-0003-2402-304X' target='orcid.widget' aria-label='ORCID'><span class='fab fa-orcid orcid' aria-hidden='true'></span></a>
-        </p>
-      </li>
-    </ul>
 
-    
+    <div class="ref-description">
+    <p>This function is adopted directly from  Georgios Karamanis' aRtist project
+at '&lt;https://github.com/gkaramanis/aRtist/blob/main/portraits/portraits<!-- %20line/line-portraits.R&gt;' --></p>
+    </div>
+
+    <pre class="usage"><span class='fu'>gemm_image_lines</span><span class='op'>(</span>
+  <span class='va'>photo</span>,
+  filepath <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span>fileext <span class='op'>=</span> <span class='st'>".png"</span><span class='op'>)</span>,
+  line_color <span class='op'>=</span> <span class='st'>"black"</span>,
+  background_color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/grDevices/colors.html'>colors</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fl'>1</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>photo</th>
+      <td><p>The path to an image to visualize, read via [magick::image_read]</p></td>
+    </tr>
+    <tr>
+      <th>filepath</th>
+      <td><p>The path to save the output image to</p></td>
+    </tr>
+    <tr>
+      <th>line_color</th>
+      <td><p>The color to draw the lines of the image</p></td>
+    </tr>
+    <tr>
+      <th>background_color</th>
+      <td><p>The flat color to use as a background</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>filepath</p>
+
   </div>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
+  </div>
 </div>
-
 
 
       <footer>
