@@ -20,7 +20,11 @@ Imports:
     magrittr,
     grDevices,
     ggplot2,
-    stats
+    stats,
+    magick,
+    dplyr, 
+    tidyr,
+    httr
 Suggests: 
     testthat (>= 3.0.0),
     covr
