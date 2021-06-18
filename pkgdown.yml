@@ -1,8 +1,8 @@
 pandoc: 2.7.3
 pkgdown: 1.6.1.9001
-pkgdown_sha: 1224e7d19dc1247a45d2885cf7b18b37bd02797b
+pkgdown_sha: 9ce6af43b55cd21e9563526e12a12d1243657bf6
 articles: {}
-last_built: 2021-04-23T17:28Z
+last_built: 2021-06-18T02:40Z
 urls:
   reference: https://mikemahoney218.github.io/gemm/reference
   article: https://mikemahoney218.github.io/gemm/articles
