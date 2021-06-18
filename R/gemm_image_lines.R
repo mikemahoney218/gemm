@@ -55,8 +55,9 @@ gemm_image_lines <- function(photo,
     ggplot2::theme(
       legend.position = "none",
       plot.background = ggplot2::element_rect(fill = background_color, color = NA)
-    ) +
-    ggplot2::ggsave(filepath)
+    )
+  
+  ggplot2::ggsave(filepath)
 
   return(filepath)
 
