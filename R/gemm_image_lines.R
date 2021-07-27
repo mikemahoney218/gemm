@@ -7,6 +7,12 @@
 #' @param filepath The path to save the output image to
 #' @param line_color The color to draw the lines of the image
 #' @param background_color The flat color to use as a background
+#' @param contrast Numeric value used to scale contrast (higher values create
+#' higher contrast images)
+#' @param density How many pixels to rescale the longest dimension to. Higher
+#' values create more "dense" lines
+#' @param width The width of the output ggplot
+#' @param height The height of the output ggplot
 #'
 #' @return filepath
 #'
@@ -14,11 +20,15 @@
 gemm_image_lines <- function(photo,
                              filepath = tempfile(fileext = ".png"),
                              line_color = "black",
-                             background_color = sample(colors(), 1)) {
+                             background_color = sample(colors(), 1),
+                             contrast = 4,
+                             density = 80,
+                             width = NA,
+                             height = NA) {
 
   # Read in image and convert to grayscale
   img <- magick::image_read(photo)
-  img <- magick::image_contrast(img, 4)
+  img <- magick::image_contrast(img, contrast)
   img <- magick::image_convert(img, colorspace = "gray")
 
   # Get dimensions
@@ -28,9 +38,9 @@ gemm_image_lines <- function(photo,
 
   # Resize the longest dimension to 80 pixels
   if (img_w >= img_h) {
-    img <- magick::image_resize(img, "80")
+    img <- magick::image_resize(img, as.character(density))
   } else {
-    img <- magick::image_resize(img, ("x80"))
+    img <- magick::image_resize(img, paste0("x", density))
   }
   # Create array and number rows and columns
   img_array <- drop(as.integer(img[[1]]))
@@ -44,7 +54,7 @@ gemm_image_lines <- function(photo,
   img_df <- dplyr::mutate(img_df, t = list(x + seq(0, 1, by = 0.05)))
   img_df <- tidyr::unnest(img_df, t)
 
-  ggplot2::ggplot(img_df) +
+  plt <- ggplot2::ggplot(img_df) +
     ggplot2::geom_path(
       ggplot2::aes(x = t, y = y + bf * sin(4 * pi * t) / 2, group = y),
       color = line_color
@@ -55,8 +65,9 @@ gemm_image_lines <- function(photo,
     ggplot2::theme(
       legend.position = "none",
       plot.background = ggplot2::element_rect(fill = background_color, color = NA)
-    ) +
-    ggplot2::ggsave(filepath)
+    )
+
+  ggplot2::ggsave(filepath, plt, width = width, height = height)
 
   return(filepath)
 

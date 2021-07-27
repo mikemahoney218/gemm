@@ -8,7 +8,11 @@ gemm_image_lines(
   photo,
   filepath = tempfile(fileext = ".png"),
   line_color = "black",
-  background_color = sample(colors(), 1)
+  background_color = sample(colors(), 1),
+  contrast = 4,
+  density = 80,
+  width = NA,
+  height = NA
 )
 }
 \arguments{
@@ -19,6 +23,16 @@ gemm_image_lines(
 \item{line_color}{The color to draw the lines of the image}
 
 \item{background_color}{The flat color to use as a background}
+
+\item{contrast}{Numeric value used to scale contrast (higher values create
+higher contrast images)}
+
+\item{density}{How many pixels to rescale the longest dimension to. Higher
+values create more "dense" lines}
+
+\item{width}{The width of the output ggplot}
+
+\item{height}{The height of the output ggplot}
 }
 \value{
 filepath
