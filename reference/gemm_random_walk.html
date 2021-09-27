@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create curved generative plots. — gemm_curves • gemm</title>
+<title>Create random walks in ggplot — gemm_random_walk • gemm</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Create curved generative plots. — gemm_curves" />
-<meta property="og:description" content="Create curved generative plots." />
+<meta property="og:title" content="Create random walks in ggplot — gemm_random_walk" />
+<meta property="og:description" content="Create random walks in ggplot" />
 
 
 
@@ -125,19 +125,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create curved generative plots.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mikemahoney218/gemm/blob/master/R/ggem_curves.R'><code>R/ggem_curves.R</code></a></small>
-    <div class="hidden name"><code>gemm_curves.Rd</code></div>
+    <h1>Create random walks in ggplot</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mikemahoney218/gemm/blob/master/R/gemm_random_walk.R'><code>R/gemm_random_walk.R</code></a></small>
+    <div class="hidden name"><code>gemm_random_walk.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create curved generative plots.</p>
+    <p>Create random walks in ggplot</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>gemm_curves</span><span class='op'>(</span>
-  pts_min <span class='op'>=</span> <span class='op'>-</span><span class='fl'>3</span>,
-  pts_max <span class='op'>=</span> <span class='fl'>3</span>,
-  by <span class='op'>=</span> <span class='fl'>0.01</span>,
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>gemm_random_walk</span><span class='op'>(</span>
+  n <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1000</span>, <span class='fl'>10000</span>, <span class='fl'>1000</span><span class='op'>)</span>, <span class='fl'>1</span><span class='op'>)</span>,
   random_min <span class='op'>=</span> <span class='op'>-</span><span class='fl'>1</span>,
   random_max <span class='op'>=</span> <span class='fl'>1</span>,
   random_min_y <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -150,8 +148,6 @@
   exponent_min_x <span class='op'>=</span> <span class='cn'>NULL</span>,
   exponent_max_y <span class='op'>=</span> <span class='cn'>NULL</span>,
   exponent_max_x <span class='op'>=</span> <span class='cn'>NULL</span>,
-  alpha <span class='op'>=</span> <span class='fl'>0.1</span>,
-  size <span class='op'>=</span> <span class='fl'>0</span>,
   color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'>grDevices</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grDevices/colors.html'>colors</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fl'>1</span><span class='op'>)</span>,
   fun <span class='op'>=</span> <span class='kw'><a href='https://rdrr.io/r/base/switch.html'>switch</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='va'>sin</span>, <span class='va'>cos</span>, <span class='va'>tan</span><span class='op'>)</span>,
   xfun <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -165,28 +161,99 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>pts_min, pts_max, by</th>
-      <td><p>Arguments determining the initial values for points
-in the x and y directions (generated via `seq(pts_min, pts_max, by)`).</p></td>
+      <th>n</th>
+      <td><p>Number of steps to take in the walk</p></td>
     </tr>
     <tr>
-      <th>random_min, random_max, random_min_y, random_min_x, random_max_y, random_max_x</th>
+      <th>random_min</th>
       <td><p>The minimum and maximum values that will be used to generate "seed"
 multipliers. If the x- and y- variants are NULL, they will inherit from the
 untagged variants.</p></td>
     </tr>
     <tr>
-      <th>exponent_min, exponent_max, exponent_min_y, exponent_min_x, exponent_max_y, exponent_max_x</th>
+      <th>random_max</th>
+      <td><p>The minimum and maximum values that will be used to generate "seed"
+multipliers. If the x- and y- variants are NULL, they will inherit from the
+untagged variants.</p></td>
+    </tr>
+    <tr>
+      <th>random_min_y</th>
+      <td><p>The minimum and maximum values that will be used to generate "seed"
+multipliers. If the x- and y- variants are NULL, they will inherit from the
+untagged variants.</p></td>
+    </tr>
+    <tr>
+      <th>random_min_x</th>
+      <td><p>The minimum and maximum values that will be used to generate "seed"
+multipliers. If the x- and y- variants are NULL, they will inherit from the
+untagged variants.</p></td>
+    </tr>
+    <tr>
+      <th>random_max_y</th>
+      <td><p>The minimum and maximum values that will be used to generate "seed"
+multipliers. If the x- and y- variants are NULL, they will inherit from the
+untagged variants.</p></td>
+    </tr>
+    <tr>
+      <th>random_max_x</th>
+      <td><p>The minimum and maximum values that will be used to generate "seed"
+multipliers. If the x- and y- variants are NULL, they will inherit from the
+untagged variants.</p></td>
+    </tr>
+    <tr>
+      <th>exponent_min</th>
       <td><p>The minimum and maximum values that will be used to generate exponential
 multipliers. If the x- and y- variants are NULL, they will inherit from the
 untagged variants.</p></td>
     </tr>
     <tr>
-      <th>alpha, size, color</th>
+      <th>exponent_max</th>
+      <td><p>The minimum and maximum values that will be used to generate exponential
+multipliers. If the x- and y- variants are NULL, they will inherit from the
+untagged variants.</p></td>
+    </tr>
+    <tr>
+      <th>exponent_min_y</th>
+      <td><p>The minimum and maximum values that will be used to generate exponential
+multipliers. If the x- and y- variants are NULL, they will inherit from the
+untagged variants.</p></td>
+    </tr>
+    <tr>
+      <th>exponent_min_x</th>
+      <td><p>The minimum and maximum values that will be used to generate exponential
+multipliers. If the x- and y- variants are NULL, they will inherit from the
+untagged variants.</p></td>
+    </tr>
+    <tr>
+      <th>exponent_max_y</th>
+      <td><p>The minimum and maximum values that will be used to generate exponential
+multipliers. If the x- and y- variants are NULL, they will inherit from the
+untagged variants.</p></td>
+    </tr>
+    <tr>
+      <th>exponent_max_x</th>
+      <td><p>The minimum and maximum values that will be used to generate exponential
+multipliers. If the x- and y- variants are NULL, they will inherit from the
+untagged variants.</p></td>
+    </tr>
+    <tr>
+      <th>color</th>
       <td><p>Arguments passed to [ggplot2::geom_point].</p></td>
     </tr>
     <tr>
-      <th>fun, xfun, yfun</th>
+      <th>fun</th>
+      <td><p>The function to be applied to generate point values.
+If the x- and y- variants are NULL, they will inherit from the
+untagged variant.</p></td>
+    </tr>
+    <tr>
+      <th>xfun</th>
+      <td><p>The function to be applied to generate point values.
+If the x- and y- variants are NULL, they will inherit from the
+untagged variant.</p></td>
+    </tr>
+    <tr>
+      <th>yfun</th>
       <td><p>The function to be applied to generate point values.
 If the x- and y- variants are NULL, they will inherit from the
 untagged variant.</p></td>
@@ -206,30 +273,7 @@ not saved.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A ggplot2 object.</p>
-    <h2 class="hasAnchor" id="point-generation"><a class="anchor" href="#point-generation"></a>Point generation</h2>
-
-    
-
-<p>Positions for each point are generated via the following process.
-First, an evenly-spaced grid of points is created via the call:
-`seq(pts_min, pts_max, by) <!-- %&gt;% expand_grid(x = ., y = .)`. x values are -->
-then adjusted via `xseed * x^xexp - xfun(y^yexp)`,
-where `xseed` is a random value set by
-`runif(1, random_min_x, random_max_x)`, `xexp` is a random integer set by
-`sample(seq(exponent_min_x, exponent_max_x, 1), 1)`, and `yexp` a random
-integer set by the same call using the `exponent_min_y` and `exponent_max_y`
-values. y values are then set via a similar call of
-`yseed * y^yexp - yfun(x^xexp)`. Points are then plotted via
-[ggplot2::geom_point] using the provided `alpha`, `size`, and `color` values.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>gemm_curves</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>1</span>, seed <span class='op'>=</span> <span class='fl'>125</span>, polar <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
-<span class='r-plt'><img src='gemm_curves-1.png' alt='' width='700' height='433' /></span>
-<span class='r-in'></span>
-</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
