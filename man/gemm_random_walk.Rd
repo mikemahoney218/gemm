@@ -19,7 +19,7 @@ gemm_random_walk(
   exponent_max_y = NULL,
   exponent_max_x = NULL,
   color = sample(grDevices::colors(), 1),
-  fun = switch(sample(1:3, 1), sin, cos, tan),
+  fun = switch(sample(1:2, 1), sin, cos),
   xfun = NULL,
   yfun = NULL,
   polar = sample(c(TRUE, FALSE), 1),
