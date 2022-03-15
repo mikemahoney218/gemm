@@ -7,6 +7,7 @@
 gemm_random_walk(
   n = sample(seq(1000, 10000, 1000), 1),
   random_min = -1,
+  step_opts = NULL,
   random_max = 1,
   random_min_y = NULL,
   random_min_x = NULL,

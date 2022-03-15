@@ -5,6 +5,7 @@
 #'
 #' @export
 gemm_random_walk <- function(n = sample(seq(1000, 10000, 1000), 1), random_min = -1,
+                             step_opts = NULL,
                              random_max = 1, random_min_y = NULL,
                              random_min_x = NULL, random_max_y = NULL,
                              random_max_x = NULL, exponent_min = 1, exponent_max = 4,
@@ -15,6 +16,14 @@ gemm_random_walk <- function(n = sample(seq(1000, 10000, 1000), 1), random_min =
                              xfun = NULL, yfun = NULL,
                              polar = sample(c(TRUE, FALSE), 1),
                              save_args = NULL, seed = NULL) {
+
+  if (is.null(step_opts)) {
+    xsteps <- c(-1, 1, 0, 0)
+    ysteps <- c(0, 0, -1, 1)
+  } else {
+    xsteps <- step_opts[[1]]
+    ysteps <- step_opts[[2]]
+  }
 
 
   if (!is.null(seed)) {
@@ -39,17 +48,15 @@ gemm_random_walk <- function(n = sample(seq(1000, 10000, 1000), 1), random_min =
   yseed <- stats::runif(1, random_min_y, random_max_y)
   yexp <- sample(seq(exponent_min_y, exponent_max_y, 1), 1)
 
-  random_walk <- function(n) {
-    xsteps <- c(-1, 1, 0, 0)
-    ysteps <- c(0, 0, -1, 1)
-    dir <- sample(1:4, n - 1, replace = TRUE)
+  random_walk <- function(n, xsteps, ysteps) {
+    dir <- sample(1:length(xsteps), n - 1, replace = TRUE)
     data.frame(
       x = c(0, cumsum(xsteps[dir])),
       y = c(0, cumsum(ysteps[dir]))
     )
   }
 
-  walk <- random_walk(n)
+  walk <- random_walk(n, xsteps, ysteps)
   walk$key <- (xseed * walk$x^xexp - fun(walk$y^yexp))
 
   p <- ggplot2::ggplot(walk, ggplot2::aes(x, y, color = key)) +
