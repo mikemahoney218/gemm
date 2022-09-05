@@ -24,7 +24,8 @@ Imports:
     magick,
     dplyr, 
     tidyr,
-    httr
+    httr,
+    rlang (>= 1.0.5)
 Suggests: 
     testthat (>= 3.0.0),
     covr
